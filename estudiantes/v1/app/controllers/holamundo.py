@@ -1,0 +1,18 @@
+from flask import Blueprint, request,jsonify
+
+holamundo_endpoints = Blueprint('estudiantes', __name__)
+
+@holamundo_endpoints.route('/hola', methods=['GET'])
+def holamundo():
+    return jsonify({"message": "¡Bienvenidos nuevos estudiantes!"}), 200
+
+@holamundo_endpoints.route('/saludo', methods=['GET'])
+def saludar():
+    data = request.get_json()
+    nombre = data.get('nombre')
+    apellido = data.get('apellido')
+    if not nombre or not apellido:
+        return jsonify({"error": "Debe de ingresar el nombre del estudiante"}), 400
+
+    saludo = f"¡Hola, {nombre} {apellido}!"
+    return jsonify({"saludo": saludo}), 200

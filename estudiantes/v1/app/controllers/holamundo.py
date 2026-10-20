@@ -12,7 +12,7 @@ def saludar():
     nombre = data.get('nombre')
     apellido = data.get('apellido')
     if not nombre or not apellido:
-        return jsonify({"error": "Debe de ingresar el nombre del estudiante"}), 400
+        return jsonify({'error': 'Debe ingresar el nombre del estudiante'}), 400
 
-    saludo = f"¡Hola, {nombre} {apellido}!"
-    return jsonify({"saludo": saludo}), 200
+    saludo = f"Hola {nombre} {apellido}"
+    return jsonify({'saludo': saludo}), 200
